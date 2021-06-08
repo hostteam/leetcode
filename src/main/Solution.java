@@ -16,7 +16,7 @@ it is guaranteed to be unique
 
 package main;
 //brute-force solution O(n^2)
-class Solution {
+public class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int[] restOFGas = new int[gas.length];
 
