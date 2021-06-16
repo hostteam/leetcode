@@ -1,8 +1,13 @@
 package test;
 
+import main.CountMatches;
 import main.Solution;
 import main.VideoStitching;
 import org.junit.jupiter.api.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -21,6 +26,21 @@ public class MainSolutionTest {
         assertEquals(-1, vs.videoStitching(new int[][] {{0,1},{1,2}}, 5));
         assertEquals(3, vs.videoStitching(new int[][] {{0,1},{6,8},{0,2},{5,6},{0,4},{0,3},{6,7},{1,3},{4,7},{1,4},{2,5},{2,6},{3,4},{4,5},{5,7},{6,9}}, 9));
         assertEquals(2, vs.videoStitching(new int[][] {{0,4},{2,8}}, 5));
+    }
+
+    @Test
+    public void countMatchesTest() {
+        CountMatches cm = new CountMatches();
+        List<List<String>> params = new ArrayList<>();
+        params.add(Arrays.asList(new String[] {"phone","blue","pixel"}));
+        params.add(Arrays.asList(new String[] {"computer","silver","lenovo"}));
+        params.add(Arrays.asList(new String[] {"phone","gold","iphone"}));
+        assertEquals(1, cm.countMatches(params, "color", "silver"));
+        params.clear();
+        params.add(Arrays.asList(new String[] {"phone","blue","pixel"}));
+        params.add(Arrays.asList(new String[] {"computer","silver","phone"}));
+        params.add(Arrays.asList(new String[] {"phone","gold","iphone"}));
+        assertEquals(2, cm.countMatches(params, "type", "phone"));
     }
 
 }
