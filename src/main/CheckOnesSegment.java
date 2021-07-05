@@ -1,24 +1,20 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Locale;
-
-public class ShortestCompletingWord {
-    public String shortestCompletingWord(String licensePlate, String[] words) {
-        String abc = "abcdefghijklonmpqrstuvwxyz";
-        licensePlate = licensePlate.toLowerCase(Locale.ROOT);
-        ArrayList<Character> sbPlate = new ArrayList<>();
-        for (int i = 0; i < licensePlate.length(); i++) {
-            int indInString = abc.indexOf(licensePlate.charAt(i));
-            if (indInString >= 0) sbPlate.add(licensePlate.charAt(i));
+public class CheckOnesSegment {
+    public boolean checkOnesSegment(String s) {
+        char[] newLine = s.toCharArray();
+        int i = 0;
+        int j = newLine.length - 1;
+        while (newLine[i] != '1' || newLine[j] != '1') {
+            if (i > j) return false;
+            if (newLine[i] != '1') i++;
+            if (newLine[j] != '1') j--;
         }
-        Collections.sort(sbPlate);
-        String wordToReturn = "";
-        for (String word : words) {
-            
-        }
+        if (j - i <= 1) return true;
 
-        return wordToReturn;
+        for (int ind = i+1; ind < j; ind++) {
+            if (newLine[ind] == '0') return false;
+        }
+        return true;
     }
 }
